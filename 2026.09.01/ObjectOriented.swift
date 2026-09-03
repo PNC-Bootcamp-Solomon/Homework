@@ -278,7 +278,7 @@ func describeError(_ error: AccountError) -> String {
         case .accountInactive:
             return "Cannot withdraw from an inactive account"
         case .insufficientFunds(available: let avail, requested: let req):
-            return "Not enough funds. You only have \(avail)"
+            return "Not enough funds for \(req). You only have \(avail)"
         case .invalidAmount:
             return "Invalid amount requested"
         case .dailyLimitExceeded(limit: let lim):
@@ -309,8 +309,8 @@ print(divider)
 for type in TransactionType.allCases {
     if type.rawValue.count >= 8 {
         print("\(type)\t -> \t\"\(type.rawValue)\"")
-    } else if type.rawValue.count <= 4 {
-        print("\(type)\t\t\t -> \t\"\(type.rawValue)\"")
+    // } else if type.rawValue.count <= 4 {
+    //     print("\(type)\t\t\t -> \t\"\(type.rawValue)\"")
     } else {
         print("\(type)\t\t -> \t\"\(type.rawValue)\"")
     }
